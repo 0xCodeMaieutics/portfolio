@@ -17,12 +17,13 @@ const cdSegments: Segment[] = [
     { text: ' ' },
     {
         text: 'development/portfolio/gio/',
-        className: 'text-term-link underline underline-offset-2',
+        className:
+            'text-term-teal underline decoration-peach decoration-2 underline-offset-4',
     },
 ]
 const commandSegments: Segment[] = [
     { text: 'cat', className: 'text-term-green' },
-    { text: ' about.txt', className: 'text-term-link' },
+    { text: ' about.txt', className: 'text-term-teal' },
 ]
 const outputSegments: Segment[] = [{ text: aboutMeText }]
 
@@ -42,12 +43,12 @@ const typingSteps = [
 function Prompt({ time }: { time: string }) {
     return (
         <>
-            <span className={'text-term-red'}>{time}</span>{' '}
-            <span className={'font-bold text-term-cyan'}>gio</span>{' '}
-            <span className={'text-term-purple'}>(</span>
-            <span className={'text-term-salmon'}>main</span>
-            <span className={'text-term-purple'}>)</span>{' '}
-            <span className={'text-term-yellow'}>✗</span>{' '}
+            <span className={'text-term-amber'}>{time}</span>{' '}
+            <span className={'font-semibold text-term-teal'}>gio</span>{' '}
+            <span className={'text-term-muted'}>(</span>
+            <span className={'text-term-green'}>main</span>
+            <span className={'text-term-muted'}>)</span>{' '}
+            <span className={'text-term-rust'}>✗</span>{' '}
         </>
     )
 }
@@ -117,18 +118,24 @@ export default function AboutMeTerminalSection() {
                             'flex-1 whitespace-pre-wrap break-words p-4 sm:p-6 lg:p-7'
                         }
                     >
-                        <div>Last login: Tue Jul 18 11:04:58 on ttys000</div>
-                        <div>Now using node v18.15.0 (npm v9.5.0)</div>
-                        <div>
-                            Welcome to fish, the friendly interactive shell
+                        {/* Boot noise recedes so the commands lead. */}
+                        <div className={'text-term-muted'}>
+                            <div>
+                                Last login: Tue Jul 18 11:04:58 on ttys000
+                            </div>
+                            <div>Now using node v20.18.0 (npm v10.8.2)</div>
+                            <div>
+                                Welcome to fish, the friendly interactive shell
+                            </div>
+                            <div>
+                                Type{' '}
+                                <span className={'text-term-green'}>help</span>{' '}
+                                for instructions on how to use fish
+                            </div>
                         </div>
                         <div>
-                            Type <span className={'text-term-green'}>help</span>{' '}
-                            for instructions on how to use fish
-                        </div>
-                        <div>
-                            <span className={'text-term-red'}>11:05</span>{' '}
-                            <span className={'text-term-green'}>~</span>{' '}
+                            <span className={'text-term-amber'}>11:05</span>{' '}
+                            <span className={'text-term-teal'}>~</span>{' '}
                             <TypedSegments
                                 segments={cdSegments}
                                 count={cdCount}
@@ -152,7 +159,14 @@ export default function AboutMeTerminalSection() {
                                 }
                             />
                         </div>
-                        <div className={'mt-3 max-w-[72ch] sm:mt-4'}>
+                        {/* The file's contents are Gio's own words, so they
+                            switch to the site's typeface, set off by the same
+                            peach rail as the work timeline. */}
+                        <div
+                            className={
+                                'mt-4 max-w-[58ch] border-l-2 border-peach pl-4 font-titillium text-lg leading-relaxed text-ink/85 sm:mt-5 sm:pl-5 sm:text-xl lg:text-2xl'
+                            }
+                        >
                             <TypedSegments
                                 segments={outputSegments}
                                 count={outputCount}
@@ -165,7 +179,7 @@ export default function AboutMeTerminalSection() {
                         </div>
                         <div
                             className={
-                                done ? 'mt-3 sm:mt-4' : 'invisible mt-3 sm:mt-4'
+                                done ? 'mt-4 sm:mt-5' : 'invisible mt-4 sm:mt-5'
                             }
                         >
                             <Prompt time={'11:06'} />
