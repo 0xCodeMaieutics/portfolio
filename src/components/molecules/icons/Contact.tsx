@@ -1,52 +1,43 @@
 import { IconType } from 'react-icons'
 import { twMerge } from 'tailwind-merge'
 
-export default function ContactIcon({
-    Icon,
-    title,
-}: {
-    Icon: IconType
+export type ContactLink = {
     title: string
-}) {
-    const transition = 'transition-all ease-out duration-500'
-    const opacity = 'bg-opacity-50 hover:bg-opacity-100'
-
-    let wrapperStyle = twMerge(
-        'group flex items-center cursor-pointer py-2 px-2 rounded-full hover:bg-[#222222] w-[102.5px]',
-        transition,
-        opacity
-    )
-
-    let iconStyle = twMerge(
-        'scale-0 translate-z-0 group-hover:transform-none text-xl font-extralight opacity-0 group-hover:opacity-100 group-hover:text-white',
-        transition
-    )
-
-    let titleStyle = twMerge(
-        'flex-1 text-left translate-x-[-10px] group-hover:translate-x-[10px] group-hover:translate-z-0  text-black opacity-100',
-        transition
-    )
-
-    if (Icon.name === 'FaGithub') {
-        titleStyle = twMerge(titleStyle, 'group-hover:text-white')
-    } else if (Icon.name === 'FaLinkedin') {
-        iconStyle = twMerge(iconStyle, 'fill-[#0C66C2]')
-        wrapperStyle = twMerge(wrapperStyle, 'hover:bg-[#0C66C2]/20 w-[110px]')
-    } else if (Icon.name === 'FaWhatsapp') {
-        iconStyle = twMerge(iconStyle, 'fill-[#4BCA5B]')
-        wrapperStyle = twMerge(wrapperStyle, 'hover:bg-[#4BCA5B]/20 w-[125px]')
-    } else if (Icon.name === 'FaEnvelope') {
-        iconStyle = twMerge(iconStyle, 'fill-[#D44638] ml-1')
-        wrapperStyle = twMerge(wrapperStyle, 'hover:bg-[#D44638]/20 w-[90px]')
-    } else if (Icon.name === 'FaYoutube') {
-        iconStyle = twMerge(iconStyle, 'fill-[#D44638]')
-        wrapperStyle = twMerge(wrapperStyle, 'hover:bg-[#D44638]/20 w-[110px]')
+    href: string
+    /** Simple Icons glyph: all share one 24px grid, so they render at the same optical size. */
+    Icon: IconType
+    external: boolean
+    /** Literal Tailwind classes so the JIT compiler can see them. */
+    styles: {
+        /** Solid brand color behind the white glyph. */
+        tile: string
     }
+}
+
+function linkProps({ href, external }: ContactLink) {
+    return external
+        ? { href, target: '_blank', rel: 'noopener noreferrer' }
+        : { href }
+}
+
+export default function ContactIcon({ link }: { link: ContactLink }) {
+    const { Icon, title, styles } = link
 
     return (
-        <button className={wrapperStyle}>
-            <Icon className={iconStyle} />
-            <div className={titleStyle}>{title}</div>
-        </button>
+        <a
+            {...linkProps(link)}
+            aria-label={title}
+            title={title}
+            className={'group grid h-11 w-11 place-items-center rounded-full'}
+        >
+            <span
+                className={twMerge(
+                    'grid h-9 w-9 place-items-center rounded-full shadow-sm ring-1 ring-black/5 transition-transform duration-150 ease-out group-hover:scale-110 group-focus-visible:scale-110 group-active:scale-90 motion-reduce:transform-none',
+                    styles.tile
+                )}
+            >
+                <Icon aria-hidden className={'h-[18px] w-[18px] text-white'} />
+            </span>
+        </a>
     )
 }

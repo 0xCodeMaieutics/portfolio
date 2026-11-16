@@ -2,55 +2,63 @@ import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import BannerSection from '../templates/sections/BannerSection'
 import AboutMeTerminalSection from '../templates/sections/AboutMeTerminal'
 import { useParallaxContext } from '../../context/parallaxContext'
-import { useMediaQuery } from '../../hooks/useMediaQuery'
+import WorkSection from '../templates/sections/WorkSection'
+import { useResyncStickyLayers } from '../../hooks/useResyncStickyLayers'
 
+/**
+ * Same color the page shows through the Parallax container
+ * (peach at 20% over cream), so the sheet blends in once it settles.
+ */
+const pageBackground =
+    'linear-gradient(rgba(239,203,189,0.2), rgba(239,203,189,0.2)), #FCF5F1'
+
+/**
+ * The banner stays pinned for the whole first page while the about-me
+ * section slides up over it as an opaque sheet, the way a card stack works.
+ *
+ * - The sheet is opaque, so the banner can't show through it. The banner
+ *   fades out completely before the sheet's edge reaches its text (see
+ *   BannerSection), so the edge never slices visible text.
+ * - Both layers pin over the same range on every screen size. ParallaxLayer
+ *   reads `sticky` only once at mount, so a media-query-based value got stuck
+ *   when the viewport changed (rotation or resize).
+ * - Both are sticky layers, so they render as siblings in reading order
+ *   (banner, then about me). `useResyncStickyLayers` fixes the library's
+ *   stale sticky offsets after a viewport height change.
+ * - Explicit z-indexes set the stacking order. WebKit can misorder sticky,
+ *   will-change layers when it relies on DOM order alone.
+ */
 export default function ParallaxReactSpring() {
     const { parallax, pages } = useParallaxContext()
-    const matches = useMediaQuery('(min-width: 640px)')
+    useResyncStickyLayers(parallax)
 
     return (
         <Parallax
             ref={parallax}
             pages={pages}
-            className={'bg-[#EFCBBD]/20 top-0 left-0'}
+            className={'left-0 top-0 bg-[#EFCBBD]/20'}
         >
-            <ParallaxLayer
-                sticky={{
-                    start: 0,
-                    end: matches ? 0.4 : 0.7,
-                }}
-            >
+            <ParallaxLayer sticky={{ start: 0, end: 1 }} style={{ zIndex: 0 }}>
                 <BannerSection />
             </ParallaxLayer>
 
-            {/*<ParallaxLayer*/}
-            {/*  offset={1}*/}
-            {/*  sticky={{*/}
-            {/*    start: 1,*/}
-            {/*    end: 1,*/}
-            {/*  }}*/}
-            {/*  className={"flex justify-center z-50"}*/}
-            {/*  // NOTE add color to debug*/}
-            {/*  // className={"flex justify-center bg-green-200/20 z-50"}*/}
-            {/*>*/}
-            {/*  <div*/}
-            {/*    className={*/}
-            {/*      "w-[450px] h-[558px] rounded-2xl p-5 bg-[#222222] overflow-hidden bg-center bg-gio-smile-large bg-no-repeat bg-cover bg-center"*/}
-            {/*    }*/}
-            {/*  />*/}
-            {/*</ParallaxLayer>*/}
-
             <ParallaxLayer
-                offset={2}
-                sticky={{
-                    start: 1,
-                    end: 2.3,
-                }}
-                // NOTE add color to debug
+                // start === end: arrives over the banner, then scrolls away
+                // normally so the work section can follow it.
+                sticky={{ start: 1, end: 1 }}
+                style={{ zIndex: 10, background: pageBackground }}
                 className={'flex items-center justify-center'}
-                // className={"flex items-center justify-center bg-red-200/20"}
             >
                 <AboutMeTerminalSection />
+            </ParallaxLayer>
+
+            {/* Sticky (with start === end) only to keep DOM/reading order:
+                regular layers render before sticky ones. */}
+            <ParallaxLayer
+                sticky={{ start: 2, end: 2 }}
+                style={{ zIndex: 20, background: pageBackground }}
+            >
+                <WorkSection />
             </ParallaxLayer>
         </Parallax>
     )
