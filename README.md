@@ -12,7 +12,7 @@ This project is built using:
 (Fork) and Clone:
 
 ```sh
-> gh repo fork gio-shara-code/portfolio portfolio
+> gh repo fork 0xCodeMaieutics/portfolio portfolio
 > gh repo clone <your-github-name>/portfolio
 ```
 

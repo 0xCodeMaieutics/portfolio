@@ -34,7 +34,7 @@ export default function ParallaxProvider({
                 parallax: parallaxRef,
                 headerTransition,
                 setScrollTop,
-                pages: 2,
+                pages: 3,
             }}
         >
             {children}
