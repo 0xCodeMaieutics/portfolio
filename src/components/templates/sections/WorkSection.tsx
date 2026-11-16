@@ -162,18 +162,25 @@ function WorkItem({
                 </p>
             )}
 
-            <ul className={'mt-4 flex flex-wrap gap-2'} aria-label={'Details'}>
-                {[entry.location, entry.workplace].map((tag) => (
-                    <li
-                        key={tag}
-                        className={
-                            'rounded-full bg-peach/50 px-3 py-1 text-sm text-ink/80'
-                        }
-                    >
-                        {tag}
-                    </li>
-                ))}
-            </ul>
+            {(entry.location || entry.workplace) && (
+                <ul
+                    className={'mt-4 flex flex-wrap gap-2'}
+                    aria-label={'Details'}
+                >
+                    {[entry.location, entry.workplace]
+                        .filter(Boolean)
+                        .map((tag) => (
+                            <li
+                                key={tag}
+                                className={
+                                    'rounded-full bg-peach/50 px-3 py-1 text-sm text-ink/80'
+                                }
+                            >
+                                {tag}
+                            </li>
+                        ))}
+                </ul>
+            )}
 
             {entry.skills && (
                 <ul
