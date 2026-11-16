@@ -10,18 +10,20 @@ export default {
         peach: "#EFCBBD",
         cream: "#FCF5F1",
         ink: "#222222",
+        /**
+         * Light "paper" terminal. Accents are the ones the work section's
+         * `git log` already uses, so both read as one system.
+         */
         term: {
-          bg: "#0B0B0C",
-          chrome: "#2A2A2C",
-          text: "#E6E6E6",
-          muted: "#8A8A8E",
-          red: "#E5534B",
-          green: "#57C454",
-          cyan: "#56D4DD",
-          purple: "#A68BF4",
-          salmon: "#F08D78",
-          yellow: "#F2D25C",
-          link: "#4FA3C4",
+          bg: "#FFFCFA",
+          chrome: "#FBF0EA",
+          line: "#F0D9CF",
+          text: "#222222",
+          muted: "#8A7F7A",
+          amber: "#9A6B12",
+          teal: "#1D7F86",
+          green: "#2F8A3A",
+          rust: "#B4532A",
         },
       },
       backgroundImage: {
