@@ -15,11 +15,7 @@ const aboutMeText = `I'm a software engineer from Germany. I'm passionate about 
 const cdSegments: Segment[] = [
     { text: 'cd', className: 'text-primary' },
     { text: ' ' },
-    {
-        text: 'development/portfolio/gio/',
-        className:
-            'underline decoration-primary decoration-2 underline-offset-4',
-    },
+    { text: 'development/portfolio/gio/' },
 ]
 const commandSegments: Segment[] = [
     { text: 'cat', className: 'text-primary' },
@@ -164,7 +160,7 @@ export default function AboutMeTerminalSection() {
                             primary rail as the work timeline. */}
                         <div
                             className={
-                                'mt-4 max-w-[58ch] border-l-2 border-primary pl-4 font-titillium text-lg leading-relaxed text-black/80 sm:mt-5 sm:pl-5 sm:text-xl lg:text-2xl'
+                                'mt-4 max-w-[58ch] border-l-2 border-primary pl-4 font-titillium text-lg leading-relaxed text-black/80 sm:mt-5 sm:pl-5 sm:text-xl lg:text-[28px]'
                             }
                         >
                             <TypedSegments
