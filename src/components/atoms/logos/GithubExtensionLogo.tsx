@@ -1,0 +1,54 @@
+import { SVGProps } from 'react'
+
+/**
+ * Github Extension app icon: a white pull-request glyph on a dark tile,
+ * with a green Slack-style chat bubble in the top-right corner.
+ */
+export default function GithubExtensionLogo(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg
+            xmlns={'http://www.w3.org/2000/svg'}
+            viewBox={'0 0 512 512'}
+            {...props}
+        >
+            <defs>
+                <linearGradient
+                    id={'github-extension-bg'}
+                    x1={0}
+                    y1={0}
+                    x2={1}
+                    y2={1}
+                >
+                    <stop offset={0} stopColor={'#2d333b'} />
+                    <stop offset={1} stopColor={'#1a1e23'} />
+                </linearGradient>
+            </defs>
+            <rect width={512} height={512} fill={'url(#github-extension-bg)'} />
+            <g
+                fill={'none'}
+                stroke={'#fff'}
+                strokeWidth={30}
+                strokeLinecap={'round'}
+                strokeLinejoin={'round'}
+            >
+                <circle cx={144} cy={160} r={40} />
+                <path d={'M144 200v128'} />
+                <circle cx={144} cy={368} r={40} />
+                <circle cx={344} cy={368} r={40} />
+                <path d={'M344 328V234q0-74-74-74h-16'} />
+                <path d={'M282 126l-34 34 34 34'} />
+            </g>
+            <g transform={'translate(356 48) scale(0.85)'}>
+                <path
+                    d={
+                        'M0 40a40 40 0 0 1 40-40h72a40 40 0 0 1 40 40v32a40 40 0 0 1-40 40H58l-30 26v-28A40 40 0 0 1 0 72z'
+                    }
+                    fill={'#2eb67d'}
+                />
+                <circle cx={44} cy={56} r={11} fill={'#fff'} />
+                <circle cx={76} cy={56} r={11} fill={'#fff'} />
+                <circle cx={108} cy={56} r={11} fill={'#fff'} />
+            </g>
+        </svg>
+    )
+}
