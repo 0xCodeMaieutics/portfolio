@@ -204,7 +204,7 @@ export default function BannerSection() {
                             'text-3xl font-light text-black/70 sm:text-5xl'
                         }
                     >
-                        Your favorite developer
+                        Your favorite software engineer
                     </animated.p>
                 </div>
             </div>
