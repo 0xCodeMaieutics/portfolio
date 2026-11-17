@@ -17,63 +17,42 @@ const contactLinks: ContactLink[] = [
         href: 'https://github.com/0xCodeMaieutics',
         Icon: SiGithub,
         external: true,
-        styles: {
-            tile: 'bg-[#181717]',
-        },
     },
     {
         title: 'Linkedin',
         href: 'https://www.linkedin.com/in/giorgi-sharashenidze-3bb9311a0/',
         Icon: SiLinkedin,
         external: true,
-        styles: {
-            tile: 'bg-[#0A66C2]',
-        },
     },
     {
         title: 'Mail',
         href: 'mailto:meet@giosha.dev',
         Icon: MdEmail,
         external: false,
-        styles: {
-            tile: 'bg-[#D93025]',
-        },
     },
     {
         title: 'Book a call',
         href: 'https://calendly.com/meet-giosha/30min',
         Icon: MdEvent,
         external: true,
-        styles: {
-            tile: 'bg-[#006BFF]',
-        },
     },
     {
         title: 'Whatsapp',
         href: 'https://wa.me/+4917681376567',
         Icon: SiWhatsapp,
         external: true,
-        styles: {
-            tile: 'bg-[#128C7E]',
-        },
     },
     {
         title: 'Telegram',
         href: 'https://t.me/xCodeMaieutics',
         Icon: SiTelegram,
         external: true,
-        styles: {
-            tile: 'bg-[#0088CC]',
-        },
     },
     {
         title: 'Youtube',
         href: 'https://www.youtube.com/channel/UCyTmDbHBLWrjdE3WChgCpaw',
         Icon: SiYoutube,
         external: true,
-        styles: {
-            tile: 'bg-[#E00000]',
-        },
     },
 ]
 
@@ -81,14 +60,14 @@ const backgroundDropFilterBlurredStyle = (
     changeNavBarBackgroundStyle: boolean
 ) => ({
     background: changeNavBarBackgroundStyle
-        ? 'rgba(252,245,241,0.75)'
+        ? 'rgba(255,255,255,0.75)'
         : 'transparent',
     backdropFilter: changeNavBarBackgroundStyle ? 'blur(12px)' : 'blur(0)',
     WebkitBackdropFilter: changeNavBarBackgroundStyle
         ? 'blur(12px)'
         : 'blur(0)',
     borderBottom: changeNavBarBackgroundStyle
-        ? '1px solid rgba(239,203,189,0.8)'
+        ? '1px solid rgba(0,0,0,0.1)'
         : '1px solid transparent',
     transition: 'background 0.2s ease-out, border-color 0.2s ease-out',
 })

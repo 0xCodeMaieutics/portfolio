@@ -27,7 +27,7 @@ html, body, #root {
 
 @layer base {
   body {
-    @apply bg-cream font-titillium text-ink antialiased;
+    @apply bg-white font-titillium text-black antialiased;
   }
   h1 {
     font-size: 64px;
@@ -46,7 +46,7 @@ html, body, #root {
     font-weight: 500;
   }
   :focus-visible {
-    @apply outline-none ring-2 ring-ink ring-offset-2 ring-offset-cream;
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-white;
   }
 }
 

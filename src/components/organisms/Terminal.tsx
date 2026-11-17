@@ -12,10 +12,8 @@ type TerminalProps = {
 }
 
 /**
- * A light "paper" terminal: the same warm material as the page, with a peach
- * hairline instead of a dark bezel. Traffic lights stay as quiet outlines and
- * only take their colors when the window is hovered, like an inactive macOS
- * window coming into focus.
+ * A light terminal: white window, black hairline, and the primary color as
+ * its only accent. Traffic lights stay as quiet neutral dots.
  */
 export default function Terminal({
     title,
@@ -26,33 +24,26 @@ export default function Terminal({
     return (
         <div
             className={twMerge(
-                'group/terminal flex flex-col overflow-hidden rounded-2xl bg-term-bg text-left ring-1 ring-term-line shadow-[0_1px_2px_rgba(34,34,34,0.04),0_12px_24px_-12px_rgba(34,34,34,0.10),0_40px_80px_-32px_rgba(154,107,18,0.22)]',
+                'group/terminal flex flex-col overflow-hidden rounded-2xl bg-white text-left shadow-xl ring-1 ring-black/10',
                 className
             )}
         >
             <div
                 className={
-                    'relative flex h-9 shrink-0 items-center border-b border-term-line bg-term-chrome px-4 sm:h-11'
+                    'relative flex h-9 shrink-0 items-center border-b border-black/10 bg-white px-4 sm:h-11'
                 }
             >
                 <div className={'flex gap-2'}>
-                    {[
-                        'group-hover/terminal:border-[#EE6A5F] group-hover/terminal:bg-[#FF5F57]',
-                        'group-hover/terminal:border-[#E9A93A] group-hover/terminal:bg-[#FEBC2E]',
-                        'group-hover/terminal:border-[#2DB44A] group-hover/terminal:bg-[#28C840]',
-                    ].map((hover) => (
+                    {['close', 'minimize', 'zoom'].map((key) => (
                         <span
-                            key={hover}
-                            className={twMerge(
-                                'h-3 w-3 rounded-full border border-ink/15 bg-ink/[0.06] transition-colors duration-300 motion-reduce:transition-none',
-                                hover
-                            )}
+                            key={key}
+                            className={'h-3 w-3 rounded-full bg-black/10'}
                         />
                     ))}
                 </div>
                 <span
                     className={
-                        'absolute inset-x-0 mx-auto w-fit font-mono text-xs text-term-muted sm:text-[13px]'
+                        'absolute inset-x-0 mx-auto w-fit font-mono text-xs text-black/50 sm:text-[13px]'
                     }
                 >
                     {title}
@@ -60,7 +51,7 @@ export default function Terminal({
                 {shortcut && (
                     <kbd
                         className={
-                            'ml-auto hidden rounded-md border border-term-line bg-term-bg px-1.5 py-0.5 font-mono text-[11px] text-term-muted sm:inline'
+                            'ml-auto hidden rounded-md border border-black/10 bg-white px-1.5 py-0.5 font-mono text-[11px] text-black/50 sm:inline'
                         }
                     >
                         {shortcut}
@@ -69,7 +60,7 @@ export default function Terminal({
             </div>
             <div
                 className={
-                    'flex flex-1 flex-col font-mono text-[13px] leading-relaxed text-term-text sm:text-[15px] lg:text-base'
+                    'flex flex-1 flex-col font-mono text-[13px] leading-relaxed text-black sm:text-[15px] lg:text-base'
                 }
             >
                 {children}
@@ -83,7 +74,7 @@ export function TerminalCursor({ blinking }: { blinking: boolean }) {
         <span className={'relative'}>
             <span
                 className={twMerge(
-                    'absolute left-0 top-1/2 h-[1.2em] w-[0.55em] -translate-y-1/2 rounded-[1px] bg-term-text/80',
+                    'absolute left-0 top-1/2 h-[1.2em] w-[0.55em] -translate-y-1/2 rounded-[1px] bg-black/80',
                     blinking && 'motion-safe:animate-cursor-blink'
                 )}
             />
@@ -160,35 +151,35 @@ function Sparkline({
     )
 }
 
-/** btop-style footer, toned down to ink with the shared accents. */
+/** btop-style footer in black, with primary icons. */
 export function TerminalStatusBar() {
     return (
         <div
             className={
-                'hidden items-center gap-4 border-t border-term-line/70 px-5 py-2.5 text-[11px] text-term-muted sm:flex md:text-xs'
+                'hidden items-center gap-4 border-t border-black/10 px-5 py-2.5 text-[11px] text-black/50 sm:flex md:text-xs'
             }
         >
             <span className={'flex shrink-0 items-center gap-1.5'}>
-                <FaMemory className={'text-term-amber'} /> 33GB
+                <FaMemory className={'text-primary'} /> 33GB
             </span>
             <Sparkline
-                className={'text-term-amber/50'}
+                className={'text-black/30'}
                 points={'0,12 40,12 70,12 72,14 74,12 100,12'}
             />
             <span className={'flex shrink-0 items-center gap-1.5'}>
-                <FaMicrochip className={'text-term-teal'} /> 17%
+                <FaMicrochip className={'text-primary'} /> 17%
             </span>
             <Sparkline
-                className={'text-term-teal/50'}
+                className={'text-black/30'}
                 points={
                     '0,13 8,12 12,9 16,12 24,11 32,12 40,10 48,12 56,11 64,12 72,10 80,12 90,11 100,12'
                 }
             />
             <span className={'flex shrink-0 items-center gap-1.5'}>
-                <FaNetworkWired className={'text-term-green'} /> 1.0 kB ↓
+                <FaNetworkWired className={'text-primary'} /> 1.0 kB ↓
             </span>
             <Sparkline
-                className={'text-term-green/50'}
+                className={'text-black/30'}
                 points={'0,14 20,14 26,4 30,14 36,8 40,14 60,12 64,14 100,14'}
             />
             <span className={'shrink-0'}>1.0 kB ↑</span>
