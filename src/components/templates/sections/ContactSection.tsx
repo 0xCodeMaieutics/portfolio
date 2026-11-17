@@ -318,44 +318,6 @@ export default function ContactSection() {
                             line. It lands straight in my inbox and I usually
                             reply within two days.
                         </p>
-
-                        <p
-                            className={
-                                'mt-10 font-mono text-[13px] text-black/50 sm:text-sm'
-                            }
-                        >
-                            <span aria-hidden className={'text-primary'}>
-                                #
-                            </span>
-                            or-skip-the-form
-                        </p>
-                        <ul className={'mt-3 space-y-2'}>
-                            <li>
-                                <DirectLink
-                                    href={`mailto:${EMAIL}`}
-                                    icon={
-                                        <MdEmail
-                                            className={'h-[18px] w-[18px]'}
-                                        />
-                                    }
-                                >
-                                    {EMAIL}
-                                </DirectLink>
-                            </li>
-                            <li>
-                                <DirectLink
-                                    href={CALL_URL}
-                                    external
-                                    icon={
-                                        <MdEvent
-                                            className={'h-[18px] w-[18px]'}
-                                        />
-                                    }
-                                >
-                                    Book a 30-min call
-                                </DirectLink>
-                            </li>
-                        </ul>
                     </div>
 
                     <div className={'lg:col-span-7'}>
@@ -601,6 +563,44 @@ export default function ContactSection() {
                                 </p>
                             </form>
                         )}
+
+                        <p
+                            className={
+                                'mt-10 font-mono text-[13px] text-black/50 sm:text-sm'
+                            }
+                        >
+                            <span aria-hidden className={'text-primary'}>
+                                #
+                            </span>
+                            or-skip-the-form
+                        </p>
+                        <ul className={'mt-3 space-y-2'}>
+                            <li>
+                                <DirectLink
+                                    href={`mailto:${EMAIL}`}
+                                    icon={
+                                        <MdEmail
+                                            className={'h-[18px] w-[18px]'}
+                                        />
+                                    }
+                                >
+                                    {EMAIL}
+                                </DirectLink>
+                            </li>
+                            <li>
+                                <DirectLink
+                                    href={CALL_URL}
+                                    external
+                                    icon={
+                                        <MdEvent
+                                            className={'h-[18px] w-[18px]'}
+                                        />
+                                    }
+                                >
+                                    Book a 30-min call
+                                </DirectLink>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </section>
