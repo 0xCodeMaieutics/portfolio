@@ -3,6 +3,7 @@ import BannerSection from '../templates/sections/BannerSection'
 import AboutMeTerminalSection from '../templates/sections/AboutMeTerminal'
 import { useParallaxContext } from '../../context/parallaxContext'
 import WorkSection from '../templates/sections/WorkSection'
+import ContactSection from '../templates/sections/ContactSection'
 import { useResyncStickyLayers } from '../../hooks/useResyncStickyLayers'
 
 /** Same color as the page, so the sheet blends in once it settles. */
@@ -49,12 +50,15 @@ export default function ParallaxReactSpring() {
             </ParallaxLayer>
 
             {/* Sticky (with start === end) only to keep DOM/reading order:
-                regular layers render before sticky ones. */}
+                regular layers render before sticky ones. Contact flows on
+                after work in the same layer: the layer is one viewport tall
+                and its overflow extends the scroll area. */}
             <ParallaxLayer
                 sticky={{ start: 2, end: 2 }}
                 style={{ zIndex: 20, background: pageBackground }}
             >
                 <WorkSection />
+                <ContactSection />
             </ParallaxLayer>
         </Parallax>
     )
