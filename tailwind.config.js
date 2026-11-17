@@ -10,6 +10,8 @@ export default {
       colors: {
         /** The one accent color. Everything else is white or black. */
         primary: colors.emerald[600],
+        /** Form errors only. Always paired with text, never color alone. */
+        danger: colors.red[600],
       },
       backgroundImage: {
         "gio-smile-large": "url('/gio-smile-591x734.png')",
