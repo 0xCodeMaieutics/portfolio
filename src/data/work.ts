@@ -8,6 +8,7 @@ import MtxLogo from '../components/atoms/logos/MtxLogo'
 import NetcoreLogo from '../components/atoms/logos/NetcoreLogo'
 import MietzLogo from '../components/atoms/logos/MietzLogo'
 import PlandLogo from '../components/atoms/logos/PlandLogo'
+import Made2GrowLogo from '../components/atoms/logos/Made2GrowLogo'
 
 export type WorkEntry = {
     role: string
@@ -135,5 +136,16 @@ export const workEntries: WorkEntry[] = [
         end: '2022-01',
         location: 'Berlin, Germany',
         skills: ['TypeScript', 'AngularJS'],
+    },
+    {
+        role: 'Full-stack Developer',
+        company: 'made2GROW GmbH',
+        logo: Made2GrowLogo,
+        url: 'https://www.made2grow.de/',
+        employmentType: 'Work Study',
+        start: '2020-06',
+        end: '2021-06',
+        location: 'Berlin, Germany',
+        skills: ['Flutter', 'AppDevelopment'],
     },
 ]
