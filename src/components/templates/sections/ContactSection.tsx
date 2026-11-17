@@ -16,6 +16,7 @@ import { MdEmail, MdEvent } from 'react-icons/md'
 import { twMerge } from 'tailwind-merge'
 import { useParallaxContext } from '../../../context/parallaxContext'
 import { useMediaQuery } from '../../../hooks/useMediaQuery'
+import { useRevealOnce } from '../../../hooks/useRevealOnce'
 
 const EMAIL = 'meet@giosha.dev'
 const CALL_URL = 'https://calendly.com/meet-giosha/30min'
@@ -45,23 +46,6 @@ function validate({ name, email, message }: Values): Errors {
 const isMac =
     typeof navigator !== 'undefined' &&
     /Mac|iPhone|iPad/.test(navigator.platform)
-
-/** Reveal once, when the element first scrolls into view. */
-function useRevealOnce<T extends Element>() {
-    const ref = useRef<T>(null)
-    const [visible, setVisible] = useState(false)
-    useEffect(() => {
-        const node = ref.current
-        if (!node || visible) return
-        const observer = new IntersectionObserver(
-            ([entry]) => entry.isIntersecting && setVisible(true),
-            { threshold: 0.15 }
-        )
-        observer.observe(node)
-        return () => observer.disconnect()
-    }, [visible])
-    return [ref, visible] as const
-}
 
 const controlClass =
     'block w-full rounded-xl bg-white px-4 py-3 text-lg text-black ring-1 ring-inset ring-black/20 transition-shadow duration-150 placeholder:text-black/40 hover:ring-black/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-0 disabled:opacity-60'
