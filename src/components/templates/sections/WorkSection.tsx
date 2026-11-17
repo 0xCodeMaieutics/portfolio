@@ -242,7 +242,7 @@ export default function WorkSection() {
                 <span
                     aria-hidden
                     className={
-                        'absolute bottom-0 left-[10px] top-3 w-0.5 rounded-full bg-gradient-to-b from-black/15 to-black/0 sm:left-[13px]'
+                        'absolute bottom-0 left-[10px] top-3 w-0.5 rounded-full bg-gradient-to-b from-black/20 to-black/0 sm:left-[13px]'
                     }
                 />
                 {workEntries.map((entry, index) => (
