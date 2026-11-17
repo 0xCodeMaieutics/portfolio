@@ -13,17 +13,17 @@ import Terminal, {
 const aboutMeText = `I'm a software engineer from Germany. I'm passionate about building stuff whether it be developer tools or applications. I'm eager to learn new things and will never be afraid of exploring new technologies.`
 
 const cdSegments: Segment[] = [
-    { text: 'cd', className: 'text-term-green' },
+    { text: 'cd', className: 'text-primary' },
     { text: ' ' },
     {
         text: 'development/portfolio/gio/',
         className:
-            'text-term-teal underline decoration-peach decoration-2 underline-offset-4',
+            'underline decoration-primary decoration-2 underline-offset-4',
     },
 ]
 const commandSegments: Segment[] = [
-    { text: 'cat', className: 'text-term-green' },
-    { text: ' about.txt', className: 'text-term-teal' },
+    { text: 'cat', className: 'text-primary' },
+    { text: ' about.txt' },
 ]
 const outputSegments: Segment[] = [{ text: aboutMeText }]
 
@@ -43,12 +43,12 @@ const typingSteps = [
 function Prompt({ time }: { time: string }) {
     return (
         <>
-            <span className={'text-term-amber'}>{time}</span>{' '}
-            <span className={'font-semibold text-term-teal'}>gio</span>{' '}
-            <span className={'text-term-muted'}>(</span>
-            <span className={'text-term-green'}>main</span>
-            <span className={'text-term-muted'}>)</span>{' '}
-            <span className={'text-term-rust'}>✗</span>{' '}
+            <span className={'text-black/50'}>{time}</span>{' '}
+            <span className={'font-semibold'}>gio</span>{' '}
+            <span className={'text-black/50'}>(</span>
+            <span className={'text-primary'}>main</span>
+            <span className={'text-black/50'}>)</span>{' '}
+            <span className={'text-black/50'}>✗</span>{' '}
         </>
     )
 }
@@ -119,7 +119,7 @@ export default function AboutMeTerminalSection() {
                         }
                     >
                         {/* Boot noise recedes so the commands lead. */}
-                        <div className={'text-term-muted'}>
+                        <div className={'text-black/50'}>
                             <div>
                                 Last login: Tue Jul 18 11:04:58 on ttys000
                             </div>
@@ -129,13 +129,13 @@ export default function AboutMeTerminalSection() {
                             </div>
                             <div>
                                 Type{' '}
-                                <span className={'text-term-green'}>help</span>{' '}
+                                <span className={'text-primary'}>help</span>{' '}
                                 for instructions on how to use fish
                             </div>
                         </div>
                         <div>
-                            <span className={'text-term-amber'}>11:05</span>{' '}
-                            <span className={'text-term-teal'}>~</span>{' '}
+                            <span className={'text-black/50'}>11:05</span>{' '}
+                            <span>~</span>{' '}
                             <TypedSegments
                                 segments={cdSegments}
                                 count={cdCount}
@@ -161,10 +161,10 @@ export default function AboutMeTerminalSection() {
                         </div>
                         {/* The file's contents are Gio's own words, so they
                             switch to the site's typeface, set off by the same
-                            peach rail as the work timeline. */}
+                            primary rail as the work timeline. */}
                         <div
                             className={
-                                'mt-4 max-w-[58ch] border-l-2 border-peach pl-4 font-titillium text-lg leading-relaxed text-ink/85 sm:mt-5 sm:pl-5 sm:text-xl lg:text-2xl'
+                                'mt-4 max-w-[58ch] border-l-2 border-primary pl-4 font-titillium text-lg leading-relaxed text-black/80 sm:mt-5 sm:pl-5 sm:text-xl lg:text-2xl'
                             }
                         >
                             <TypedSegments

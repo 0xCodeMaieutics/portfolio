@@ -61,14 +61,14 @@ function WorkItem({
             <span
                 aria-hidden
                 className={
-                    'absolute left-0 top-1.5 grid h-[22px] w-[22px] place-items-center rounded-full bg-cream sm:left-[3px]'
+                    'absolute left-0 top-1.5 grid h-[22px] w-[22px] place-items-center rounded-full bg-white sm:left-[3px]'
                 }
             >
                 <span
                     className={
                         current
-                            ? 'h-3 w-3 rounded-full bg-[#2F8A3A] shadow-[0_0_0_4px_rgba(47,138,58,0.18)] motion-safe:animate-pulse'
-                            : 'h-3 w-3 rounded-full border-2 border-ink/40 bg-cream'
+                            ? 'h-3 w-3 rounded-full bg-primary ring-4 ring-primary/20 motion-safe:animate-pulse'
+                            : 'h-3 w-3 rounded-full border-2 border-black/40 bg-white'
                     }
                 />
             </span>
@@ -79,17 +79,17 @@ function WorkItem({
                     'flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[13px] sm:text-sm'
                 }
             >
-                <span className={'text-[#9A6B12]'}>
+                <span className={'text-black/50'}>
                     {shortHash(entry.company + entry.start)}
                 </span>
                 {current && (
-                    <span className={'text-ink/60'}>
+                    <span className={'text-black/50'}>
                         (
-                        <span className={'font-semibold text-[#1D7F86]'}>
+                        <span className={'font-semibold text-black'}>
                             HEAD
                         </span>{' '}
                         -&gt;{' '}
-                        <span className={'font-semibold text-[#2F8A3A]'}>
+                        <span className={'font-semibold text-primary'}>
                             main
                         </span>
                         )
@@ -100,7 +100,7 @@ function WorkItem({
             <h3 className={'mt-2 text-3xl font-bold leading-tight sm:text-4xl'}>
                 {entry.role}
             </h3>
-            <p className={'mt-1 text-xl text-ink/80 sm:text-2xl'}>
+            <p className={'mt-1 text-xl text-black/70 sm:text-2xl'}>
                 {entry.logo && (
                     <entry.logo
                         aria-hidden
@@ -115,7 +115,7 @@ function WorkItem({
                         target={'_blank'}
                         rel={'noopener noreferrer'}
                         className={
-                            'group inline-flex items-center gap-0.5 rounded font-semibold text-ink underline decoration-peach decoration-2 underline-offset-4 transition-colors duration-200 hover:decoration-ink'
+                            'group inline-flex items-center gap-0.5 rounded font-semibold text-black underline decoration-black/20 decoration-2 underline-offset-4 transition-colors duration-200 hover:text-primary hover:decoration-primary'
                         }
                     >
                         {entry.company}
@@ -128,17 +128,17 @@ function WorkItem({
                         <span className={'sr-only'}> (opens in a new tab)</span>
                     </a>
                 ) : (
-                    <span className={'font-semibold text-ink'}>
+                    <span className={'font-semibold text-black'}>
                         {entry.company}
                     </span>
                 )}
-                <span aria-hidden className={'mx-2 text-ink/30'}>
+                <span aria-hidden className={'mx-2 text-black/30'}>
                     ·
                 </span>
                 {entry.employmentType}
             </p>
 
-            <p className={'mt-3 font-mono text-sm text-ink/70 sm:text-[15px]'}>
+            <p className={'mt-3 font-mono text-sm text-black/60 sm:text-[15px]'}>
                 <time dateTime={entry.start}>{monthFormat.format(start)}</time>
                 {' – '}
                 {current ? (
@@ -146,7 +146,7 @@ function WorkItem({
                 ) : (
                     <time dateTime={entry.end}>{monthFormat.format(end)}</time>
                 )}
-                <span aria-hidden className={'mx-2 text-ink/30'}>
+                <span aria-hidden className={'mx-2 text-black/30'}>
                     ·
                 </span>
                 {formatDuration(start, end)}
@@ -155,7 +155,7 @@ function WorkItem({
             {entry.description && (
                 <p
                     className={
-                        'mt-4 max-w-[60ch] text-lg leading-relaxed text-ink/80'
+                        'mt-4 max-w-[60ch] text-lg leading-relaxed text-black/70'
                     }
                 >
                     {entry.description}
@@ -173,7 +173,7 @@ function WorkItem({
                             <li
                                 key={tag}
                                 className={
-                                    'rounded-full bg-peach/50 px-3 py-1 text-sm text-ink/80'
+                                    'rounded-full bg-black/5 px-3 py-1 text-sm text-black/70'
                                 }
                             >
                                 {tag}
@@ -190,9 +190,9 @@ function WorkItem({
                     {entry.skills.map((skill) => (
                         <li
                             key={skill}
-                            className={'font-mono text-[13px] text-ink/60'}
+                            className={'font-mono text-[13px] text-black/50'}
                         >
-                            <span aria-hidden className={'text-[#9A6B12]'}>
+                            <span aria-hidden className={'text-primary'}>
                                 #
                             </span>
                             {skill}
@@ -228,10 +228,10 @@ export default function WorkSection() {
         >
             <p
                 aria-hidden
-                className={'font-mono text-sm text-ink/60 sm:text-base'}
+                className={'font-mono text-sm text-black/50 sm:text-base'}
             >
-                <span className={'text-[#2F8A3A]'}>~/work</span>{' '}
-                <span className={'text-ink/40'}>$</span> git log --career
+                <span className={'text-primary'}>~/work</span>{' '}
+                <span className={'text-black/40'}>$</span> git log --career
             </p>
             <h2 id={'work-heading'} className={'mt-2'}>
                 Work
@@ -242,7 +242,7 @@ export default function WorkSection() {
                 <span
                     aria-hidden
                     className={
-                        'absolute bottom-0 left-[10px] top-3 w-0.5 rounded-full bg-gradient-to-b from-peach to-peach/0 sm:left-[13px]'
+                        'absolute bottom-0 left-[10px] top-3 w-0.5 rounded-full bg-gradient-to-b from-black/15 to-black/0 sm:left-[13px]'
                     }
                 />
                 {workEntries.map((entry, index) => (

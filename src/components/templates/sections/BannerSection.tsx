@@ -163,7 +163,7 @@ export default function BannerSection() {
                         decoding={'async'}
                         draggable={false}
                         className={
-                            'h-28 w-28 rounded-full bg-[#222] object-cover shadow-lg ring-4 ring-white/70 sm:h-44 sm:w-44'
+                            'h-28 w-28 rounded-full bg-black object-cover shadow-lg ring-4 ring-white sm:h-44 sm:w-44'
                         }
                     />
                 </animated.picture>
@@ -201,7 +201,7 @@ export default function BannerSection() {
                     <animated.p
                         style={helloStyle}
                         className={
-                            'text-3xl font-light text-ink/80 sm:text-5xl'
+                            'text-3xl font-light text-black/70 sm:text-5xl'
                         }
                     >
                         Your favorite developer

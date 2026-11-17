@@ -25,7 +25,7 @@ export default function IconBouncingButton({ Icon, ...rest }: Props) {
                 aria-hidden={hidden || undefined}
                 {...rest}
                 className={twMerge(
-                    'grid h-16 w-16 cursor-pointer place-items-center rounded-full bg-peach text-ink transition-[opacity,background-color,box-shadow] duration-300 ease-out hover:bg-[#E8B9A7] motion-safe:animate-scroll-cue',
+                    'grid h-16 w-16 cursor-pointer place-items-center rounded-full bg-primary text-white transition-[opacity,background-color,box-shadow] duration-300 ease-out hover:bg-emerald-700 motion-safe:animate-scroll-cue',
                     hidden && 'pointer-events-none opacity-0'
                 )}
             >

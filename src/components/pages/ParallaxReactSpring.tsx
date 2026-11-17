@@ -5,12 +5,8 @@ import { useParallaxContext } from '../../context/parallaxContext'
 import WorkSection from '../templates/sections/WorkSection'
 import { useResyncStickyLayers } from '../../hooks/useResyncStickyLayers'
 
-/**
- * Same color the page shows through the Parallax container
- * (peach at 20% over cream), so the sheet blends in once it settles.
- */
-const pageBackground =
-    'linear-gradient(rgba(239,203,189,0.2), rgba(239,203,189,0.2)), #FCF5F1'
+/** Same color as the page, so the sheet blends in once it settles. */
+const pageBackground = '#FFFFFF'
 
 /**
  * The banner stays pinned for the whole first page while the about-me
@@ -36,7 +32,7 @@ export default function ParallaxReactSpring() {
         <Parallax
             ref={parallax}
             pages={pages}
-            className={'left-0 top-0 bg-[#EFCBBD]/20'}
+            className={'left-0 top-0 bg-white'}
         >
             <ParallaxLayer sticky={{ start: 0, end: 1 }} style={{ zIndex: 0 }}>
                 <BannerSection />

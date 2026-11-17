@@ -1,30 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require("tailwindcss/plugin");
 const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        peach: "#EFCBBD",
-        cream: "#FCF5F1",
-        ink: "#222222",
-        /**
-         * Light "paper" terminal. Accents are the ones the work section's
-         * `git log` already uses, so both read as one system.
-         */
-        term: {
-          bg: "#FFFCFA",
-          chrome: "#FBF0EA",
-          line: "#F0D9CF",
-          text: "#222222",
-          muted: "#8A7F7A",
-          amber: "#9A6B12",
-          teal: "#1D7F86",
-          green: "#2F8A3A",
-          rust: "#B4532A",
-        },
+        /** The one accent color. Everything else is white or black. */
+        primary: colors.emerald[600],
       },
       backgroundImage: {
         "gio-smile-large": "url('/gio-smile-591x734.png')",
