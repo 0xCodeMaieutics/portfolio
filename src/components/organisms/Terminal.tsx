@@ -60,7 +60,7 @@ export default function Terminal({
             </div>
             <div
                 className={
-                    'flex flex-1 flex-col font-mono text-[13px] leading-relaxed text-black sm:text-[15px] lg:text-base'
+                    'flex flex-1 flex-col font-mono text-[13px] leading-relaxed text-black sm:text-[15px] lg:text-lg'
                 }
             >
                 {children}
