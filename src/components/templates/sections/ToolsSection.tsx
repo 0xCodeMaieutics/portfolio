@@ -1,7 +1,7 @@
 import { FiArrowUpRight } from 'react-icons/fi'
 import { useMediaQuery } from '../../../hooks/useMediaQuery'
 import { useRevealOnce } from '../../../hooks/useRevealOnce'
-import { ExtensionEntry, extensionEntries } from '../../../data/extensions'
+import { ToolEntry, toolEntries } from '../../../data/tools'
 
 const monthFormat = new Intl.DateTimeFormat('en-US', {
     month: 'short',
@@ -13,15 +13,20 @@ const parseMonth = (value: string) => {
     return new Date(year, month - 1, 1)
 }
 
-/** "owner/name" from a GitHub URL, shown like a cloned repo path. */
-const repoSlug = (url: string) => new URL(url).pathname.replace(/^\/|\/$/g, '')
+/** "owner/name" for a GitHub repo, like a cloned path; otherwise the domain. */
+const sourceLabel = (url: string) => {
+    const { hostname, pathname } = new URL(url)
+    return hostname === 'github.com'
+        ? pathname.replace(/^\/|\/$/g, '')
+        : hostname
+}
 
-function ExtensionItem({
+function ToolItem({
     entry,
     index,
     revealed,
 }: {
-    entry: ExtensionEntry
+    entry: ToolEntry
     index: number
     revealed: boolean
 }) {
@@ -53,7 +58,7 @@ function ExtensionItem({
                 aria-hidden
                 className={'font-mono text-[13px] text-black/50 sm:text-sm'}
             >
-                {repoSlug(entry.url)}
+                {sourceLabel(entry.url)}
             </p>
 
             <h3
@@ -116,7 +121,7 @@ function ExtensionItem({
             {entry.platforms && (
                 <ul
                     className={'mt-4 flex flex-wrap gap-2'}
-                    aria-label={'Runs in'}
+                    aria-label={'Works with'}
                 >
                     {entry.platforms.map((platform) => (
                         <li
@@ -157,7 +162,7 @@ function ExtensionItem({
  * Side projects I've built, listed with the same rail-and-node layout as
  * the work history above.
  */
-export default function ExtensionsSection() {
+export default function ToolsSection() {
     const prefersReducedMotion = useMediaQuery(
         '(prefers-reduced-motion: reduce)'
     )
@@ -167,7 +172,7 @@ export default function ExtensionsSection() {
     return (
         <section
             ref={sectionRef}
-            aria-labelledby={'extensions-heading'}
+            aria-labelledby={'tools-heading'}
             className={
                 'mx-auto w-full max-w-[1040px] px-6 pb-16 pt-20 sm:px-10'
             }
@@ -176,11 +181,11 @@ export default function ExtensionsSection() {
                 aria-hidden
                 className={'font-mono text-sm text-black/50 sm:text-base'}
             >
-                <span className={'text-primary'}>~/extensions</span>{' '}
+                <span className={'text-primary'}>~/tools</span>{' '}
                 <span className={'text-black/40'}>$</span> ls --built
             </p>
-            <h2 id={'extensions-heading'} className={'mt-2'}>
-                Extensions
+            <h2 id={'tools-heading'} className={'mt-2'}>
+                Tools
             </h2>
 
             <ol className={'relative mt-10 sm:mt-14'}>
@@ -190,8 +195,8 @@ export default function ExtensionsSection() {
                         'absolute bottom-0 left-[10px] top-3 w-0.5 rounded-full bg-gradient-to-b from-black/20 to-black/0 sm:left-[13px]'
                     }
                 />
-                {extensionEntries.map((entry, index) => (
-                    <ExtensionItem
+                {toolEntries.map((entry, index) => (
+                    <ToolItem
                         key={entry.url}
                         entry={entry}
                         index={index}

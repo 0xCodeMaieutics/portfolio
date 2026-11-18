@@ -3,7 +3,7 @@ import BannerSection from '../templates/sections/BannerSection'
 import AboutMeTerminalSection from '../templates/sections/AboutMeTerminal'
 import { useParallaxContext } from '../../context/parallaxContext'
 import WorkSection from '../templates/sections/WorkSection'
-import ExtensionsSection from '../templates/sections/ExtensionsSection'
+import ToolsSection from '../templates/sections/ToolsSection'
 import ContactSection from '../templates/sections/ContactSection'
 import { useResyncStickyLayers } from '../../hooks/useResyncStickyLayers'
 
@@ -51,7 +51,7 @@ export default function ParallaxReactSpring() {
             </ParallaxLayer>
 
             {/* Sticky (with start === end) only to keep DOM/reading order:
-                regular layers render before sticky ones. Extensions and
+                regular layers render before sticky ones. Tools and
                 contact flow on after work in the same layer: the layer is
                 one viewport tall and its overflow extends the scroll area. */}
             <ParallaxLayer
@@ -59,7 +59,7 @@ export default function ParallaxReactSpring() {
                 style={{ zIndex: 20, background: pageBackground }}
             >
                 <WorkSection />
-                <ExtensionsSection />
+                <ToolsSection />
                 <ContactSection />
             </ParallaxLayer>
         </Parallax>
