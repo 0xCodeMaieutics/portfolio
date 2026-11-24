@@ -1,54 +1,58 @@
 import { SVGProps } from 'react'
 
 /**
- * Github Extension app icon: a white pull-request glyph on a dark tile,
- * with a green Slack-style chat bubble in the top-right corner.
+ * Github Extension app icon: a white GitHub mark framed by Slack-colored bars
+ * on a dark rounded tile.
  */
 export default function GithubExtensionLogo(props: SVGProps<SVGSVGElement>) {
     return (
         <svg
             xmlns={'http://www.w3.org/2000/svg'}
-            viewBox={'0 0 512 512'}
+            viewBox={'0 0 128 128'}
             {...props}
         >
-            <defs>
-                <linearGradient
-                    id={'github-extension-bg'}
-                    x1={0}
-                    y1={0}
-                    x2={1}
-                    y2={1}
-                >
-                    <stop offset={0} stopColor={'#2d333b'} />
-                    <stop offset={1} stopColor={'#1a1e23'} />
-                </linearGradient>
-            </defs>
-            <rect width={512} height={512} fill={'url(#github-extension-bg)'} />
-            <g
-                fill={'none'}
-                stroke={'#fff'}
-                strokeWidth={30}
-                strokeLinecap={'round'}
-                strokeLinejoin={'round'}
-            >
-                <circle cx={144} cy={160} r={40} />
-                <path d={'M144 200v128'} />
-                <circle cx={144} cy={368} r={40} />
-                <circle cx={344} cy={368} r={40} />
-                <path d={'M344 328V234q0-74-74-74h-16'} />
-                <path d={'M282 126l-34 34 34 34'} />
-            </g>
-            <g transform={'translate(356 48) scale(0.85)'}>
-                <path
-                    d={
-                        'M0 40a40 40 0 0 1 40-40h72a40 40 0 0 1 40 40v32a40 40 0 0 1-40 40H58l-30 26v-28A40 40 0 0 1 0 72z'
-                    }
+            <rect width={128} height={128} rx={28} fill={'#1f2328'} />
+            <g>
+                <rect
+                    x={18}
+                    y={18}
+                    width={72}
+                    height={14}
+                    rx={7}
+                    fill={'#36c5f0'}
+                />
+                <rect
+                    x={96}
+                    y={18}
+                    width={14}
+                    height={72}
+                    rx={7}
                     fill={'#2eb67d'}
                 />
-                <circle cx={44} cy={56} r={11} fill={'#fff'} />
-                <circle cx={76} cy={56} r={11} fill={'#fff'} />
-                <circle cx={108} cy={56} r={11} fill={'#fff'} />
+                <rect
+                    x={38}
+                    y={96}
+                    width={72}
+                    height={14}
+                    rx={7}
+                    fill={'#ecb22e'}
+                />
+                <rect
+                    x={18}
+                    y={38}
+                    width={14}
+                    height={72}
+                    rx={7}
+                    fill={'#e01e5a'}
+                />
             </g>
+            <path
+                transform={'translate(38 38) scale(3.25)'}
+                fill={'#ffffff'}
+                d={
+                    'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'
+                }
+            />
         </svg>
     )
 }
